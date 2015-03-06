@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export NODE_ENV=${NODE_ENV:-"development"}
+
 case "$1" in
   install)
     echo "Installing node..."

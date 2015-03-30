@@ -13,6 +13,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv C7917B12 \
  && npm install -g express-generator nodemon \
  && rm -rf /var/lib/apt/lists/* # 20150323
 
+RUN echo "!/bin/sh ntpdate ntp.ubuntu.com" >> /etc/cron.daily/ntpdate \
+    && chmod 750 /etc/cron.daily/ntpdate
+
 ADD scripts /scripts
 ADD start /start
 RUN chmod 755 /start

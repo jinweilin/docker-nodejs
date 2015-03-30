@@ -1,4 +1,4 @@
-FROM sameersbn/ubuntu:14.04.20150220
+FROM sameersbn/ubuntu:14.04.20150323
 MAINTAINER sameer@damagehead.com
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv C7917B12 \
@@ -7,7 +7,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv C7917B12 \
  && apt-get install -y nodejs \
  && adduser --disabled-login --gecos 'NodeJS' nodejs \
  && npm install -g express-generator nodemon \
- && rm -rf /var/lib/apt/lists/* # 20150220
+ && rm -rf /var/lib/apt/lists/* # 20150323
+ 
+RUN echo "Asia/Taipei" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata 
 
 ADD scripts /scripts
 ADD start /start
